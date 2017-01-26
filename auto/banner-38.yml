@@ -1,0 +1,25 @@
+---
+- hosts: banner-38
+  become: true
+  become_method: sudo
+
+  tasks:
+    - name: update all packages to the latest version
+      apt: update_cache=true
+
+    - name: Install list of ldap packages
+      apt: name=ldap-utils state=installed
+
+    - template: src=../templates/profile dest=/etc/profile
+
+    - template: src=../templates/login.bash dest=/usr/local/bin/login.bash
+
+    - name: Give login.bash script executable permissions
+      file: path=/usr/local/bin/login.bash mode=0755
+
+    - lineinfile: dest=/etc/ssh/sshd_config line="Banner /etc/ssh/ssh_banner"
+
+    - template: src=../templates/ssh_banner dest=/etc/ssh/ssh_banner
+ 
+    - service: name=ssh state=restarted
+

@@ -1,0 +1,49 @@
+---
+- hosts: banner-39
+  become: true
+  become_method: sudo 
+   
+  tasks:
+    - name: update all packages to the latest version
+      apt: update_cache=true 
+      when: ansible_distribution == "Ubuntu"
+
+    - name: update all packages to the latest version CentOS
+      yum: name=* state=latest update_cache=true    
+      when: ansible_distribution == "CentOS"
+
+    - name: Install list of ldap packages
+      apt: name=ldap-utils state=installed
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install list of ldap packages CentOS
+      yum: name=openldap* state=installed
+      when: ansible_distribution == "CentOS"
+
+    - name: Install libselinux-python CentOS
+      yum: name=libselinux-python state=present
+      when: ansible_distribution == "CentOS"
+
+    - name: Copy profile from /templates to /etc 
+      template: src=../templates/profile dest=/etc/profile
+
+    - name: Copy login.bash from /templates to /usr/local/bin
+      template: src=../templates/login.bash dest=/usr/local/bin/login.bash
+
+    - name: Give login.bash script executable permissions
+      file: path=/usr/local/bin/login.bash mode=0755
+
+    - name: Add line to sshd_config
+      lineinfile: dest=/etc/ssh/sshd_config line="Banner /etc/ssh/ssh_banner"
+
+    - name: Copy ssh_banner from /templates to /etc
+      template: src=../templates/ssh_banner dest=/etc/ssh/ssh_banner
+ 
+    - name: Restart server
+      service: name=ssh state=restarted
+      when: ansible_distribution == "Ubuntu"
+    
+    - name: Restart server CentOs
+      service: name=sshd state=restarted
+      when: ansible_distribution == "CentOS"
+...

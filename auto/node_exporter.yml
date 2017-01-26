@@ -1,0 +1,39 @@
+---
+- hosts: Prometheus
+  become: true
+  become_method: sudo 
+   
+  tasks:
+    - name: update all packages to the latest version
+      apt: update_cache=true 
+
+    - name: Create Prometheus directory in /opt
+      file: path=/opt/Prometheus state=directory
+
+    - name: Download Node_Exporter tar file and unarchive in /opt/Prometheus
+      unarchive:
+        src: https://github.com/prometheus/node_exporter/releases/download/v0.13.0/node_exporter-0.13.0.linux-amd64.tar.gz
+        dest: /opt/Prometheus
+        remote_src: True
+
+    - name: Rename the node_exporter-0.13.0.linux-amd64 directory to node_exporter
+      command: mv /opt/Prometheus/node_exporter-0.13.0.linux-amd64 node_exporter
+
+    - name: Start node_exporter
+      service: name=node_exporter state=started 
+
+    - name: Download Prometheus tar file and unarchive in /opt/Prometheus
+      unarchive:
+        src: https://github.com/prometheus/prometheus/releases/download/v1.4.1/prometheus-1.4.1.linux-amd64.tar.gz
+        dest: /opt/Prometheus
+        remote_src: True
+
+    - name: Rename the prometheus-1.4.1.linux-amd64 directory to server
+      command: mv /opt/Prometheus/prometheus-1.4.1.linux-amd64 server
+
+    - name: Start prometheus
+      service: name=prometheus state=started
+
+    - name: Restart server
+      service: name=ssh state=restarted
+...
