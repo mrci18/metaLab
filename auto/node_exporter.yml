@@ -1,5 +1,5 @@
 ---
-- hosts: Prometheus
+- hosts: banner-39
   become: true
   become_method: sudo 
    
@@ -17,10 +17,17 @@
         remote_src: True
 
     - name: Rename the node_exporter-0.13.0.linux-amd64 directory to node_exporter
-      command: mv /opt/Prometheus/node_exporter-0.13.0.linux-amd64 node_exporter
-
+      command: mv /opt/Prometheus/node_exporter-0.13.0.linux-amd64 /opt/Prometheus/node_exporter
+  
+    - name: create a new file with lineinfile
+      lineinfile: dest=/etc/init/node_exporter.conf 
+                  regexp='^' 
+                  line='#For Ubuntu\n#Start node_exporter on Startup\n start on startup\n script\n /opt/Prometheus/node_exporter/node_exporter\n end script'
+                  state=present
+                  create=True  
+    
     - name: Start node_exporter
-      service: name=node_exporter state=started 
+      service: name=node_exporter state=started
 
     - name: Download Prometheus tar file and unarchive in /opt/Prometheus
       unarchive:
@@ -29,11 +36,21 @@
         remote_src: True
 
     - name: Rename the prometheus-1.4.1.linux-amd64 directory to server
-      command: mv /opt/Prometheus/prometheus-1.4.1.linux-amd64 server
+      command: mv /opt/Prometheus/prometheus-1.4.1.linux-amd64 /opt/Prometheus/server
 
-    - name: Start prometheus
+    - name: Create symbolic link to Prometheus in /usr/bin
+      command: ln -s /opt/Prometheus/server/prometheus /usr/bin
+
+    - name: create a new file with lineinfile
+      lineinfile: dest=/etc/init/prometheus.conf 
+                  regexp='^' 
+                  line='#Prometheus Upstart Script\nstart on startup\nscript\n /usr/bin/prometheus -config.file /opt/Prometheus/server/prometheus.yml > /var/log/prometheus.log 2>&1 &\nend script'
+                  state=present
+                  create=True  
+   
+    - name: Start Prometheus 
       service: name=prometheus state=started
-
+    
     - name: Restart server
       service: name=ssh state=restarted
 ...
