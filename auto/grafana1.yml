@@ -1,0 +1,41 @@
+---
+- hosts: banner-39
+  become: true
+  become_method: sudo
+
+  tasks:
+    - name: Create grafana folder in /opt/Prometheus
+      file:
+        state=directory
+        path=/opt/Prometheus/grafana
+
+    - name: download sources
+      get_url:
+        url=https://grafanarel.s3.amazonaws.com/builds/grafana_4.1.1-1484211277_amd64.deb 
+        dest=/opt/Prometheus/grafana
+
+    - name: Install libfontconfig
+      apt: 
+        name=libfontconfig
+        update_cache=true
+        state=present
+
+    - name: Install deb package
+      apt:
+        deb: /opt/Prometheus/grafana/grafana_4.1.1-1484211277_amd64.deb
+
+    - name: update all packages to the latest version
+      apt: update_cache=true
+   
+    - name: Install grafana
+      apt: 
+        name=grafana
+        update_cache=true
+        state=present
+
+    - name: Start Grafana
+      service: name=grafana-server state=started
+ 
+    - name: Restart server
+      service: name=ssh state=restarted
+...
