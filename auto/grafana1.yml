@@ -20,6 +20,12 @@
         update_cache=true
         state=present
 
+    - name: Install adduser
+      apt: 
+        name=adduser
+        update_cache=true
+        state=present
+
     - name: Install deb package
       apt:
         deb: /opt/Prometheus/grafana/grafana_4.1.1-1484211277_amd64.deb
@@ -32,6 +38,24 @@
         name=grafana
         update_cache=true
         state=present
+
+    - name: Install postfix
+      apt: 
+        name=postfix
+        update_cache=true
+        state=present
+
+    - name: Set host name to ubuntu67.grid.csun.edu on main.cf
+      lineinfile: dest=/etc/postfix/main.cf
+                  regexp='myhostname = ubuntu67.grid.csun.edu1'
+                  line='myhostname = ubuntu67.grid.csun.edu'
+                  state=present
+
+    - name: Set other destinations to accept mail 
+      lineinfile: dest=/etc/postfix/main.cf
+                  regexp='mydestination = ubuntu.grid.csun.edu, localhost.grid.csun.edu, localhost'
+                  line='mydestination = ubuntu67.grid.csun.edu, localhost.grid.csun.edu, localhost'
+                  state=present
 
     - name: Start Grafana
       service: name=grafana-server state=started
