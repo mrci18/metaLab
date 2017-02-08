@@ -1,0 +1,36 @@
+# my global config
+global:
+
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+  evaluation_interval: 15s # By default, scrape targets every 15 seconds.
+  # scrape_timeout is set to the global default (10s).
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+      monitor: 'codelab-monitor'
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first.rules"
+  # - "second.rules"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 30s
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ['prometheus.grid.csun.edu:9090']
+
+  - job_name: 'node'
+    scrape_interval: 30s
+    static_configs:
+    - targets: ['gamay.grid.csun.edu:9100','ns-38.grid.csun.edu:9100','automagic.grid.csun.edu:9100','logs.grid.csun.edu:9100','masson.grid.csun.edu:9100','git.metalab.csun.edu:9100','monitoring.grid.csun.edu:9100','web-proxy.grid.csun.edu:9100','web-services.grid.csun.edu:9100','web-miniprodapps.metalab.csun.edu:9100','ldap-proxy.grid.csun.edu:9100','eas.pioneering.csun.edu:9100','ssh.metalab.csun.edu:9100','prometheus.grid.csun.edu:9100','web-testing.grid.csun.edu:9100','web-production.grid.csun.edu:9100','cdn.metalab.csun.edu:9100','rgsBackup.grid.csun.edu:9100','c1-s2.grid.csun.edu:9100','tasks.sandbox.csun.edu:9100','rgs-afp.grid.csun.edu:9100','atlassian.grid.csun.edu:9100','c1-s1.grid.csun.edu:9100','catbird.grid.csun.edu:9100','c1-s3.grid.csun.edu:9100','c1-s4.grid.csun.edu:9100']	
