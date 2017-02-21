@@ -95,11 +95,8 @@
         update_cache=true
         state=present
 
-   # - name: Copy grafana.ini into /etc/grafana/
-   #   template: src=/etc/ansible/templates/grafana.ini dest=/etc/grafana/
-     ###Please scp the grafana.ini file from "prometheus.metalab.csun.edu:/etc/grafana/grafana.ini" to "automagic.grid.csun.edu:/etc/ansible/templates"
-     ###My permission was denied when I tried to do it
-     ###Uncomment lines when done
+    - name: Copy grafana.ini into /etc/grafana/
+      template: src=/etc/ansible/templates/grafana.ini dest=/etc/grafana/
 
     - name: Start Grafana
       service: name=grafana-server state=started
