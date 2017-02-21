@@ -1,5 +1,5 @@
 ---
-- hosts: banner-39
+- hosts: Prometheus
   become: true
   become_method: sudo 
    
@@ -48,6 +48,9 @@
                   state=present
                   create=True  
    
+    - name: Copy prometheus.yml into /etc/ansible/templates
+      template: src=/etc/ansible/templates/prometheus.yml dest=/opt/Prometheus/server/
+
     - name: Start Prometheus 
       service: name=prometheus state=started
 
@@ -91,6 +94,12 @@
         name=postfix
         update_cache=true
         state=present
+
+   # - name: Copy grafana.ini into /etc/grafana/
+   #   template: src=/etc/ansible/templates/grafana.ini dest=/etc/grafana/
+     ###Please scp the grafana.ini file from "prometheus.metalab.csun.edu:/etc/grafana/grafana.ini" to "automagic.grid.csun.edu:/etc/ansible/templates"
+     ###My permission was denied when I tried to do it
+     ###Uncomment lines when done
 
     - name: Start Grafana
       service: name=grafana-server state=started
