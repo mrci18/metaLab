@@ -1,0 +1,83 @@
+$ORIGIN metalab.csun.edu.
+$TTL 3600
+metalab.csun.edu.    IN    SOA    ns1.metalab.csun.edu. steve.metalab.csun.edu. (
+				201501130021 ; serial
+				7200         ; refresh (2 hours)
+				900          ; retry (15 mins)
+				604800       ; expire (1 week)
+		                3600         ; minimum (1 hour)
+		)
+
+;; name servers
+		NS	ns1.metalab.csun.edu.
+		NS	ns2.metalab.csun.edu.
+
+                NS      ns1.cenic.org.
+                NS      ns2.cenic.org.
+                NS      ns3.cenic.org.
+                NS      ns4.cenic.org.
+		NS      ns5.cenic.org.
+		NS      ns6.cenic.org.
+	
+                NS      skimmer.csun.edu.
+                NS      sapsucker.csun.edu.
+
+                MX	10 ASPMX.L.GOOGLE.COM.
+		MX	20 ALT1.ASPMX.L.GOOGLE.COM.
+		MX	20 ALT2.ASPMX.L.GOOGLE.COM.
+		MX	30 ASPMX2.GOOGLEMAIL.COM.
+		MX	30 ASPMX3.GOOGLEMAIL.COM.
+;;;
+ns1                     A       130.166.39.253
+ns2                     A       130.166.38.253
+
+;;
+;;
+metalab.csun.edu. 	TXT	"google-site-verification=_sqiULyfz9hx_kG7meQ8N_7Qd4UERQSv40O-0KdEPKo"
+metalab.csun.edu.       TXT     "v=spf1 include:_spf.google.com ~all"
+_spf			TXT	"v=spf1 include:_spf.google.com -all"
+			TXT	"v=spf1 include:_spf.google.com ~all"
+;
+;
+$TTL 600	; 10 minutes
+;; META Lab Web Proxy | META Lab Main Website
+@			A	130.166.38.10
+www			CNAME	@
+
+;; Google APPS
+mail			CNAME	ghs.googlehosted.com.
+calendar		CNAME	ghs.googlehosted.com.
+drive			CNAME	ghs.googlehosted.com.
+
+web-miniprodapps		A	130.166.38.246	
+
+;; minimal intensity production web applications hosted on web-miniprodapps
+rgs-intake		CNAME	web-miniprodapps
+
+;; META Lab Production Products
+faculty			CNAME	products-production-1.grid.csun.edu.
+udwpe			CNAME	products-production-1.grid.csun.edu.
+etd			CNAME	products-production-1.grid.csun.edu.
+
+;; META Lab Staging Products
+faculty-staging		CNAME	products-staging.grid.csun.edu.
+udwpe-staging		CNAME	products-staging.grid.csun.edu.
+etd-staging		CNAME	products-staging.grid.csun.edu.
+curriculum-staging	CNAME	products-staging.grid.csun.edu.
+wellbeingapp-staging	CNAME	products-staging.grid.csun.edu.
+;; Atlassian Products [ JIRA + CONFLUENCE ]
+atlassian		A	130.166.38.251
+tasks			CNAME	atlassian ;; JIRA
+wiki			CNAME	atlassian ;; CONFLUENCE
+
+;; I.T
+git			A 	130.166.38.31
+gitlab			CNAME 	git
+warehouse		A	130.166.38.26
+ssh			A	130.166.38.54
+
+;
+krx7od6wuwib.metalab.csun.edu. CNAME gv-k5yj4gjf652fmi.dv.googlehosted.com.
+;
+;
+$INCLUDE /etc/bind/zones/vhost.RR.metalab

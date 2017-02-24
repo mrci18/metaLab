@@ -1,0 +1,52 @@
+$ORIGIN sandbox.csun.edu.
+$TTL    600	; 10 minutes
+sandbox.csun.edu.	IN SOA	ns1.sandbox.csun.edu. steve.grid.csun.edu. (
+                                2014060706 ; serial
+                                10800      ; refresh (3 hours)
+                                900        ; retry (15 minutes)
+                                604800     ; expire (1 week)
+                                86400      ; minimum (1 day)
+                                )
+
+; DNS Servers
+			NS	ns1.sandbox.csun.edu.
+			NS	ns2.sandbox.csun.edu.
+			NS	skimmer.csun.edu.
+			NS	sapsucker.csun.edu.
+			NS	ns4.cenic.org.
+			NS	ns5.cenic.org.
+			NS	ns6.cenic.org.
+; MX Servers
+			MX	10 ASPMX.L.GOOGLE.COM.
+			MX	20 ALT1.ASPMX.L.GOOGLE.COM.
+			MX	20 ALT2.ASPMX.L.GOOGLE.COM.
+			MX	30 ASPMX2.GOOGLEMAIL.COM.
+			MX	30 ASPMX3.GOOGLEMAIL.COM.
+			MX	30 ASPMX4.GOOGLEMAIL.COM.
+			MX	30 ASPMX5.GOOGLEMAIL.COM.
+
+			TXT	"v=spf1 include:_spf.google.com -all"
+_spf	 		TXT	"v=spf1 include:_spf.google.com -all"
+
+; Host Servers
+ns1			A	130.166.39.253
+ns2			A	130.166.38.253
+;
+ns3			A	130.166.39.254
+ns			CNAME	ns1
+;
+;
+eas-dude-testing	A	130.166.39.246
+eas-ir-testing	        A       130.166.39.246
+
+googlefe55669860d05b3b	CNAME	google.com.
+mathweb1		A	130.166.39.150
+spss			A	130.166.42.1
+spss-39 		A	130.166.39.30
+ubuntu-gamer2		A	130.166.39.72
+winxp-gamer1		A	130.166.39.72
+cit160			A	130.166.39.234
+cit160web		A	130.166.39.235
+
+$INCLUDE /etc/bind/zones/vhost.RR.sandbox
+

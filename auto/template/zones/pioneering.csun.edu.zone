@@ -1,0 +1,49 @@
+$ORIGIN pioneering.csun.edu.
+$TTL 0
+pioneering.csun.edu.	IN SOA ns1.grid.csun.edu. ops.metalab.csun.edu. (
+				2015121603	; Serial	YYYYMMDD####
+				600		; Refresh	10 Minutes
+				900		; Retry		15 Minutes
+				604800		; Expire	1 Week
+				0		; Minimum	0 Minutes
+			)
+
+;; The Pioneering Web Server Is Hosted By Central IT
+;@		A		130.167.238.195
+@		A		130.166.38.203
+
+	;; DOMAIN NAME SERVERS
+	NS ns1.grid.csun.edu.
+	NS ns2.grid.csun.edu.
+
+;	NS ns1.cenic.org.
+;	NS ns2.cenic.org.
+;	NS ns3.cenic.org.
+	NS ns4.cenic.org.
+	NS ns5.cenic.org.
+	NS ns6.cenic.org.
+
+	NS skimmer.csun.edu.
+	NS sapsucker.csun.edu.
+	
+	;; MAIL SERVERS
+	MX	10 	ASPMX.L.GOOGLE.COM.
+	MX	20 	ALT1.ASPMX.L.GOOGLE.COM.
+	MX	20 	ALT2.ASPMX.L.GOOGLE.COM.
+	MX	30	ASPMX2.GOOGLEMAIL.COM.
+	MX	30 	ASPMX3.GOOGLEMAIL.COM.
+	MX	30 	ASPMX4.GOOGLEMAIL.COM.
+	MX	30 	ASPMX5.GOOGLEMAIL.COM.
+
+	TXT	"v=spf1 include:_spf.google.com -all"
+
+_spf	TXT	"v=spf1 include:_spf.google.com -all"
+
+;; PIONEERING TECHNOLOGY GROUP PRODUCTION-LEVEL APPLICATIONS
+symposium	A 	130.166.38.203
+orsp		A 	130.166.38.49
+eas		A 	130.166.38.241
+udwpe		CNAME	web-production.grid.csun.edu. ;; Previosuly 130.166.38.239
+
+;; VIRTUAL INFRASTRUCTURE SERVICES
+

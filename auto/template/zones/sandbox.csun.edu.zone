@@ -1,0 +1,123 @@
+$ORIGIN sandbox.csun.edu.
+$TTL 0 ; 0 Minutes
+sandbox.csun.edu.	IN SOA ns2.grid.csun.edu. ops.metalab.csun.edu. (
+				2017021000	; Serial	YYYYMMDD####
+				600		; Refresh	10 Minutes
+				900		; Retry		15 Minutes
+				604800		; Expire	1 Week
+				0		; Minimum	0 Minutes
+			)
+
+	;; DOMAIN NAME SERVERS
+	NS ns1.grid.csun.edu.
+	NS ns2.grid.csun.edu.
+
+;	NS ns1.cenic.org.
+;	NS ns2.cenic.org.
+;	NS ns3.cenic.org.
+	NS ns4.cenic.org.
+	NS ns5.cenic.org.
+	NS ns6.cenic.org.
+
+	NS skimmer.csun.edu.
+	NS sapsucker.csun.edu.
+
+	;; MAIL SERVERS
+	MX	10 	ASPMX.L.GOOGLE.COM.
+	MX	20 	ALT1.ASPMX.L.GOOGLE.COM.
+	MX	20 	ALT2.ASPMX.L.GOOGLE.COM.
+	MX	30 	ASPMX2.GOOGLEMAIL.COM.
+	MX	30 	ASPMX3.GOOGLEMAIL.COM.
+	MX	30 	ASPMX4.GOOGLEMAIL.COM.
+	MX	30 	ASPMX5.GOOGLEMAIL.COM.
+
+	TXT	"v=spf1 include:_spf.google.com -all"
+
+_spf	TXT	"v=spf1 include:_spf.google.com -all"
+
+;; WEB PROXY APP TESTING URLs
+www		CNAME		web-proxy-3.grid.csun.edu.
+@		A		130.166.38.209
+
+;; PRODUCT TESTING URLs
+web-testing		CNAME		web-testing.grid.csun.edu.
+faculty-testing		CNAME		web-testing
+udwpe-testing		CNAME		web-testing
+udwpe-training		CNAME		web-testing
+etd-testing		CNAME		web-testing
+etd-v2-testing		CNAME		web-testing
+curriculum-testing	CNAME		web-testing
+wellbeingapp-testing	CNAME		web-testing
+aa2-testing		CNAME		web-testing
+opg-testing		CNAME		web-testing
+tedx-testing		CNAME		web-wordpress.grid.csun.edu.
+josh-testing		CNAME		web-testing
+metalab-code-deploy-testing	CNAME	web-testing
+basic-laravel-testing	CNAME		web-testing
+
+;; PRODUCT DEMO URLs
+web-demo		CNAME		web-demo.grid.csun.edu.
+faculty-demo		CNAME		web-demo
+udwpe-demo		CNAME		web-demo
+etd-demo		CNAME		web-demo
+curriculum-demo		CNAME		web-demo
+wellbeingapp-demo	CNAME		web-demo
+aa2-demo		CNAME		web-demo
+opg-demo		CNAME		web-demo
+josh-demo		CNAME		web-demo
+mom-demo                CNAME           web-demo
+helix-demo		CNAME		Web-demo
+helix-demo-A		CNAME		web-demo
+helix-demo-B		CNAME		web-demo
+checkpoint-demo		CNAME		web-demo
+metame-demo		CNAME		web-demo
+directory-demo		CNAME		web-demo
+jewel-demo		CNAME		web-demo
+ncod-coverage-needed-web-service-demo CNAME web-demo
+pickmysolar-demo	CNAME		web-demo
+as-metro-pass-demo	CNAME		web-demo
+palpatine-demo		CNAME		web-demo
+lad-demo		CNAME		web-demo
+affinity-demo 		CNAME		web-demo
+waldo-demo		CNAME		web-demo
+fast-demo		CNAME		web-demo
+curriculum-demo		CNAME		web-demo
+degrees-demo		CNAME		web-demo
+faculty-suite-v3-demo	CNAME		web-demo
+eas-demo		CNAME		web-demo
+
+;; INFRASTRUCTURE TESTING URLs
+ansible-test		CNAME		web-testing
+
+;; CLIENT APPLICATIONS AND SERVICES
+mathweb1	A 	130.166.38.151
+mathweb 	A	130.166.38.150
+
+;; CLIENT VIRTUAL MACHINES
+ubuntu-gamer2	A 	130.166.38.245
+ims		A	130.166.38.138
+
+;; CIT 160 CLASS VIRTUAL MACHINES
+cit160		A 	130.166.39.161
+cit160lab	A 	130.166.39.160
+
+;;  JIRA SANDBOX INSTANCE
+tasks		A	130.166.38.142
+
+;; COMP 322 CLASS VIRTUAL MACHINES
+comp322lab	A 	130.166.38.236
+
+;; GOOGLE
+googlefe55669860d05b3b	CNAME	google.com.
+
+;; VIRTUAL INFRASTRUCTURE SERVICES
+
+;; META+Lab Personal VMs
+pod11		A	130.166.39.11
+pod58		A	130.166.39.58
+lisa-test	A	130.166.39.23
+openconf	A	130.166.39.148
+lmtest		A	130.166.39.63
+
+;; SPLAB CLIENT VMs
+context-aware 	A	130.166.39.61

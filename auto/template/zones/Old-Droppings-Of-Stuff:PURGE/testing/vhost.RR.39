@@ -1,0 +1,12 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  These are the RR (Resource Records) for the vhosts
+;;  for this domain
+;;  The records in the file are typcially added via an 
+;;  automated script
+
+2        IN   PTR  eas.sandbox.csun.edu.
+2        IN   PTR  eas.sandbox.csun.edu.
+2        IN   PTR  eas.sandbox.csun.edu.
+2        IN   PTR  eas.sandbox.csun.edu.
+2        IN   PTR  eas.sandbox.csun.edu.
+2        IN   PTR  eas.sandbox.csun.edu.

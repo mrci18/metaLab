@@ -1,0 +1,4 @@
+eas       IN   A     130.166.38.203
+eas       IN   A     130.166.38.203
+eas       IN   CNAME foobar
+eas       IN   CNAME foobar

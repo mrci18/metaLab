@@ -1,0 +1,34 @@
+$ORIGIN .
+$TTL 600	; 10 minutes
+chaos.ecs.csun.edu	IN SOA	ns.sandbox.csun.edu. root.sandbox.csun.edu. (
+				2013083001 ; serial
+				10800      ; refresh (3 hours)
+				900        ; retry (15 minutes)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+			NS	ns1.sandbox.csun.edu.
+			NS	ns2.sandbox.csun.edu.
+			NS	skimmer.csun.edu.
+			NS      sapsucker.csun.edu.
+			NS      ns4.cenic.org.
+			NS      ns5.cenic.org.
+			NS      ns6.cenic.org.
+$ORIGIN chaos.ecs.csun.edu.
+
+chaos239		A	130.166.42.239
+arrogant-bastard	A	130.166.42.247
+ea			A	130.166.42.69
+fadal			A	130.166.42.68
+guinness		A	130.166.42.248
+iop			A	130.166.42.67
+newcastle		A	130.166.42.246
+okocim			A	130.166.42.249
+project			A	130.166.42.66
+thing1			A	130.166.42.40
+thing2			A	130.166.42.47
+
+thinserv		A	130.166.42.230
+
+xserve			A	130.166.42.2
+

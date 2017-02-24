@@ -1,0 +1,65 @@
+$TTL 0
+$ORIGIN ptg.csun.edu.
+@		IN SOA ns1.grid.csun.edu. ops.metalab.csun.edu. (
+			2017012702	; Serial	YYYYMMDD##
+			600		; Refresh 	10 Minutes
+			900		; Retry		15 Minutes
+			604800		; Expire	1 Week
+			0		; Minimum	0 Minutes
+		)
+
+	;; DOMAIN NAME SERVERS
+	NS ns1.grid.csun.edu.
+	NS ns2.grid.csun.edu.
+
+;	NS ns1.cenic.org.
+;	NS ns2.cenic.org.
+;	NS ns3.cenic.org.
+	NS ns4.cenic.org.
+	NS ns5.cenic.org.
+	NS ns6.cenic.org.
+
+	NS skimmer.csun.edu.
+	NS sapsucker.csun.edu.
+
+	;; MAIL SERVERS
+	MX	10	ASPMX.L.GOOGLE.COM.
+	MX	20	ALT1.ASPMX.L.GOOGLE.COM.
+	MX	20	ALT2.ASPMX.L.GOOGLE.COM.
+	MX	30 	ASPMX2.GOOGLEMAIL.COM.
+	MX	30 	ASPMX3.GOOGLEMAIL.COM.
+	MX	30 	ASPMX4.GOOGLEMAIL.COM.
+	MX	30	ASPMX5.GOOGLEMAIL.COM.
+
+	TXT	"v=spf1 include:_spf.google.com -all"
+
+_spf	TXT	"v=spf1 include:_spf.google.com -all"
+
+;; PIONEERING TECHNOLOGY GROUP PRODUCTION-LEVEL WEB SERVICES
+curriculum-legacy	A	130.166.38.240
+curriculum		CNAME	web-services.grid.csun.edu.
+directory		CNAME	web-services.grid.csun.edu.
+roster			A	130.166.38.241
+
+;; META+Lab PRODUCTION-LEVEL WEB SERVICES
+jewel		CNAME	web-services.grid.csun.edu.
+degrees		CNAME	web-services.grid.csun.edu.
+mycourses	CNAME	web-services.grid.csun.edu.
+
+;; MySQL PTG RECORDS
+mysql-rds-1     CNAME   production.cl4bmklzzvjq.us-west-2.rds.amazonaws.com.
+mysql-rds       CNAME   mysql-rds-1.ptg.csun.edu.
+mysql-prod	CNAME	mysql-rds.ptg.csun.edu.
+mysql-stage	CNAME	mysqlenttst.csun.edu.
+mysql-demo	CNAME	mysqlent.csun.edu.
+mysql-test	CNAME	mysqlenttst.csun.edu.
+mysql-internal	CNAME	masson.grid.csun.edu.
+
+;; THIRD PARTY APPLICATIONS AND SERVICES
+irc	CNAME	irc.freenode.net
+
+;; Office of Research and Sponsored Projects
+orsp		A	130.166.39.75
+orsp-fms13	A	130.166.38.49
+orsp-fms14	A	130.166.39.75
+orsp-files	A	130.166.24.153	

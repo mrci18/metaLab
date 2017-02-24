@@ -1,0 +1,18 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  These are the RR (Resource Records) for the vhosts
+;;  for this domain
+;;  The records in the file are typcially added via an 
+;;  automated script
+
+eas       IN   A     130.166.38.203
+eas       IN   A     130.166.39.2
+eas       IN   A     130.166.38.2
+eas       IN   A     130.166.38.2
+eas       IN   A     130.166.39.2
+eas       IN   A     130.166.39.2
+eas       IN   A     130.166.39.2
+eas       IN   A     130.166.39.2
+eas       IN   A     130.166.39.2
+eas       IN   A     130.166.38.203
+eas       IN   A     130.166.38.203
+eas       IN   A     130.166.38.203

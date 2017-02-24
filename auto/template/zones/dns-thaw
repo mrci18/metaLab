@@ -1,0 +1,33 @@
+#! /bin/bash
+
+domain=$1
+
+if [[ -z ${domain} ]]; then
+	echo "Domain Name Not Specified"
+	echo "Rerun command as follows: ./dns-thaw domain_name"
+	exit 1
+fi
+
+echo "Reloading and Thawing out ${domain} in 3 seconds"
+echo "^c to cancel"
+echo ""
+sleep 3
+
+echo "Checking Zone File"
+sudo named-checkzone ${domain} ${domain}.zone
+echo ""
+sleep 1
+
+echo "Thawing Zone File"
+sudo rndc thaw ${domain}
+echo ""
+sleep 1
+
+echo "Reloading Zone File. This should fail due to the above thaw."
+sudo rndc reload ${domain}
+echo ""
+sleep 1
+
+
+echo "Done."
+exit 0

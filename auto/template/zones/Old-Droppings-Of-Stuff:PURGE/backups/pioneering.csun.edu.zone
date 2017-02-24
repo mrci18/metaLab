@@ -1,0 +1,63 @@
+$ORIGIN pioneering.csun.edu.
+$TTL 3600
+pioneering.csun.edu.    IN    SOA    ns1.pioneering.csun.edu. steve.grid.csun.edu. (
+				201501130001; serial
+				7200       ; refresh (2 hours)
+				900        ; retry (15 mins)
+				604800     ; expire (1 week)
+		                3600       ; minimum (1 hour)
+		)
+
+; The pioneering web server is hosted by central IT
+;@                       A       130.167.238.195
+@			A 130.166.38.203
+
+;; name
+		NS	ns1.pioneering.csun.edu.
+		NS	ns2.pioneering.csun.edu.
+
+		NS	skimmer.csun.edu.
+		NS      sapsucker.csun.edu.
+		
+		NS	ns1.cenic.org.
+		NS	ns2.cenic.org.
+		NS	ns3.cenic.org.
+		NS      ns4.cenic.org.
+		NS      ns5.cenic.org.
+		NS      ns6.cenic.org.
+;; mail
+		MX	10 ASPMX.L.GOOGLE.COM.
+		MX	20 ALT1.ASPMX.L.GOOGLE.COM.
+		MX	20 ALT2.ASPMX.L.GOOGLE.COM.
+		MX	30 ASPMX2.GOOGLEMAIL.COM.
+		MX	30 ASPMX3.GOOGLEMAIL.COM.
+		MX	30 ASPMX4.GOOGLEMAIL.COM.
+		MX	30 ASPMX5.GOOGLEMAIL.COM.
+
+		TXT     "v=spf1 include:_spf.google.com -all"
+_spf 		TXT	"v=spf1 include:_spf.google.com -all"
+;;
+ns1			A	130.166.39.253
+ns2			A	130.166.38.253
+;;
+;;
+symposium		A	130.166.38.203
+git                     CNAME   git.grid.csun.edu.
+$TTL 600	; 10 minutes
+orsp                    A       130.166.38.49
+confluence		A	130.166.38.204
+jira			A	130.166.38.204
+archive			CNAME	c1-s3.grid.csun.edu.
+
+web-staging		A	130.166.38.242
+eas-staging		CNAME	web-staging.pioneering.csun.edu.
+roster-staging		CNAME	web-staging.pioneering.csun.edu.
+udwpe-staging		CNAME	web-staging.pioneering.csun.edu.
+
+web-demo		A	130.166.38.244
+eas-demo		CNAME	web-demo.pioneering.csun.edu.
+udwpe-demo		CNAME	web-demo.pioneering.csun.edu.
+;
+;
+$INCLUDE /etc/bind/zones/vhost.RR.pioneering
+

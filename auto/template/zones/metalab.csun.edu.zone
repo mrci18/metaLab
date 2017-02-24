@@ -1,0 +1,129 @@
+$ORIGIN metalab.csun.edu.
+$TTL 0
+metalab.csun.edu.	IN SOA ns2.grid.csun.edu. ops.metalab.csun.edu. (
+				2017021000	; Serial 	YYYYMMDD##
+				600		; Refresh	0 Minutes
+				900		; Retry		15 Minutes
+				604800		; Expire	1 Week
+				0		; Minimum	0 Minutes
+			)
+
+	;; DOMAIN NAME SERVERS
+	NS	ns1.grid.csun.edu.
+	NS	ns2.grid.csun.edu.
+
+;	NS      ns1.cenic.org.
+;    	NS      ns2.cenic.org.
+;       NS      ns3.cenic.org.
+        NS      ns4.cenic.org.
+	NS      ns5.cenic.org.
+	NS      ns6.cenic.org.
+	
+        NS      skimmer.csun.edu.
+        NS      sapsucker.csun.edu.
+
+	;; NS from AWS
+	NS	ns-1262.awsdns-29.org.
+	NS	ns-826.awsdns-39.net.
+	NS	ns-1819.awsdns-35.co.uk.
+	NS	ns-316.awsdns-39.com. 
+
+        ;; MAIL SERVERS
+        MX	10	ASPMX.L.GOOGLE.COM.
+	MX	20 	ALT1.ASPMX.L.GOOGLE.COM.
+	MX	20 	ALT2.ASPMX.L.GOOGLE.COM.
+	MX	30 	ASPMX2.GOOGLEMAIL.COM.
+	MX	30 	ASPMX3.GOOGLEMAIL.COM.
+
+metalab.csun.edu.	TXT	"google-site-verification=_sqiULyfz9hx_kG7meQ8N_7Qd4UERQSv40O-0KdEPKo"
+metalab.csun.edu.   	TXT 	"v=spf1 include:_spf.google.com ~all"
+_spf			TXT	"v=spf1 include:_spf.google.com -all"
+			TXT	"v=spf1 include:_spf.google.com ~all"
+
+metalab.csun.edu.       SPF     "v=spf1 include:_spf.google.com ~all"
+_spf                    SPF     "v=spf1 include:_spf.google.com -all"
+                        SPF     "v=spf1 include:_spf.google.com ~all"
+
+;; META+LAB WEB PROXY AND WEBSITE
+www	CNAME	web-proxy-2.grid.csun.edu.
+@	A	130.166.38.208
+
+;; VIRTUAL WEB SERVERS
+web-production		CNAME	web-production.grid.csun.edu.
+web-production-1	CNAME	web-production-1.grid.csun.edu.
+web-production-2	CNAME	web-production-2.grid.csun.edu.
+web-production-3	CNAME	web-production-3.grid.csun.edu.
+web-miniprodapps	CNAME	web-miniprodapps.grid.csun.edu.
+web-staging		CNAME	web-staging.grid.csun.edu.
+web-demo		CNAME	web-demo.grid.csun.edu.
+web-testing		CNAME	web-testing.grid.csun.edu.
+web-proxy		CNAME	web-proxy.grid.csun.edu.
+web-proxy-1		CNAME	web-proxy-1.grid.csun.edu.
+web-proxy-2		CNAME	web-proxy-2.grid.csun.edu.
+web-proxy-3		CNAME	web-proxy-3.grid.csun.edu.
+web-proxy-4             CNAME   web-proxy-4.grid.csun.edu.
+web-wordpress		CNAME	web-wordpress.grid.csun.edu.
+metastead-testing	CNAME	metastead-testing.grid.csun.edu.
+
+;; META+LAB PRODUCTION-LEVEL APPLICATIONS
+html-files		CNAME   web-miniprodapps.grid.csun.edu.
+rgs-intake		CNAME	web-miniprodapps.grid.csun.edu.
+lad			CNAME   web-production.grid.csun.edu.
+faculty			CNAME	web-production.grid.csun.edu.
+udwpe			CNAME	web-production.grid.csun.edu.
+etd-v2			CNAME	web-production.grid.csun.edu.
+etd-v2-rgs		CNAME	web-production.grid.csun.edu.
+etd			CNAME	web-production.grid.csun.edu.
+aa2			CNAME	web-production.grid.csun.edu.
+dockit			CNAME	web-production.grid.csun.edu.
+mom			CNAME	web-production.grid.csun.edu.
+tedx			CNAME	web-wordpress.grid.csun.edu.
+ncod-coverage-needed-web-service	CNAME	web-production.grid.csun.edu.
+as-metro-pass		CNAME	web-production.grid.csun.edu.
+metaphor		CNAME	web-production.grid.csun.edu.
+scholarship		CNAME	web-production.grid.csun.edu.
+proxy-test		CNAME	web-production.grid.csun.edu.
+
+;; META+LAB AWS SERVERS
+aws-web-production	A	52.8.99.93
+aws-web-production-2	A	52.9.196.11
+aws-git			A	52.9.71.73
+aws-opg-production	A	52.9.78.8
+aws-opg-testing		A	54.69.192.159
+roptest			A	35.165.38.69
+
+;; TABLEAU SERVER ON AWS
+by-the-numbers		A	50.112.219.154
+counts 		        A	130.166.38.206
+
+;; META+LAB AWS PRODUCTION-LEVEL APPLICATIONS
+;aws-faculty		CNAME	aws-web-production.metalab.csun.edu.
+aws-aa2   		CNAME	webloadbalancer-1192681953.us-west-2.elb.amazonaws.com.
+aws-faculty		CNAME	webloadbalancer-1192681953.us-west-2.elb.amazonaws.com.
+aws-testv		CNAME	webloadbalancer-1192681953.us-west-2.elb.amazonaws.com.
+aws-dockit		CNAME	webloadbalancer-1192681953.us-west-2.elb.amazonaws.com.
+
+;; META+LAB STAGING APPLICATIONS
+faculty-staging		CNAME	web-staging.grid.csun.edu.
+udwpe-staging		CNAME	web-staging.grid.csun.edu.
+etd-staging		CNAME	web-staging.grid.csun.edu.
+curriculum-staging	CNAME	web-staging.grid.csun.edu.
+aa2-staging		CNAME	web-staging.grid.csun.edu.
+opg-staging		CNAME	web-staging.grid.csun.edu.
+tedx-staging		CNAME	web-wordpress.grid.csun.edu.
+
+;; ATLASSIAN APPLICATIONS AND SERVICES
+atlassian	A 	130.166.38.251
+tasks 		CNAME	atlassian 	;; JIRA
+wiki		CNAME	atlassian 	;; CONFLUENCE
+
+;; GOOGLE
+mail		CNAME	ghs.googlehosted.com.
+calendar	CNAME	ghs.googlehosted.com.
+drive		CNAME	ghs.googlehosted.com.
+
+;; VIRTUAL INFRASTRUCTURE SERVICES
+git 	A 	130.166.38.31
+ssh	A 	130.166.38.54
+cdn	A	130.166.38.144
+

@@ -1,0 +1,44 @@
+$TTL 600
+$ORIGIN ptg.csun.edu.
+@    		IN    SOA    ns1.ptg.csun.edu. steve.grid.csun.edu. (
+                                201501130001; serial
+                                10800      ; refresh (3 hours)
+                                900        ; retry (15 minutes)
+                                604800     ; expire (1 week)
+                                3600       ; minimum (1 hour)
+)
+;; name
+			NS	ns1.ptg.csun.edu.
+			NS	ns2.ptg.csun.edu.
+
+			NS	skimmer.csun.edu.
+			NS      sapsucker.csun.edu.
+
+			NS	ns1.cenic.org.
+			NS	ns2.cenic.org.
+			NS	ns3.cenic.org.
+			NS      ns4.cenic.org.
+			NS      ns5.cenic.org.
+			NS      ns6.cenic.org.
+
+;;
+                        TXT     "v=spf1 -all"
+_spf                    TXT     "v=spf1 -all"
+
+;;
+ns1			A	130.166.39.253
+ns2			A	130.166.38.253
+
+;; Curriculm Web Service
+;curriculum		A	130.166.38.203
+;
+;;
+mysql-prod		CNAME	mysqlent.csun.edu.
+mysql-stage		CNAME 	mysqlenttst.csun.edu.
+mysql-test		CNAME   masson.grid.csun.edu.
+
+
+irc			CNAME	irc.freenode.net.
+
+$INCLUDE /etc/bind/zones/vhost.RR.ptg
+

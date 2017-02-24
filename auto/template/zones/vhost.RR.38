@@ -1,0 +1,9 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  These are the RR (Resource Records) for the vhosts
+;;  for this domain
+;;  The records in the file are typcially added via an 
+;;  automated script
+
+203        IN   PTR  eas.sandbox.csun.edu.
+240        IN   PTR  curriculum.ptg.csun.edu.
+241        IN   PTR  eas.pioneering.csun.edu.

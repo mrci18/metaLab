@@ -1,0 +1,14 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+131.168.192.in-addr.arpa IN SOA	ns.grid.csun.edu. root.grid.csun.edu. (
+				2008041812 ; serial
+				10800      ; refresh (3 hours)
+				900        ; retry (15 minutes)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+			NS	ns.grid.csun.edu.
+$ORIGIN 131.168.192.in-addr.arpa.
+101			PTR	storageap1.grid.csun.edu.
+102			PTR	storagebp1.grid.csun.edu.
+

@@ -28,7 +28,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['prometheus.grid.csun.edu:9090']
+      - targets: ['ubuntu67.grid.csun.edu:9090']
 
   - job_name: 'node'
     scrape_interval: 30s

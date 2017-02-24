@@ -1,0 +1,86 @@
+$ORIGIN sandbox.csun.edu.
+$TTL    600	; 10 minutes
+sandbox.csun.edu.	IN SOA	ns1.sandbox.csun.edu. steve.grid.csun.edu. (
+                                201501130022 ; serial
+                                10800      ; refresh (3 hours)
+                                900        ; retry (15 minutes)
+                                604800     ; expire (1 week)
+                                3600       ; minimum (1 hour)
+                                )
+
+; DNS Servers
+			NS	ns1.sandbox.csun.edu.
+			NS	ns2.sandbox.csun.edu.
+
+			NS	skimmer.csun.edu.
+			NS	sapsucker.csun.edu.
+
+			NS	ns1.cenic.org.
+			NS	ns2.cenic.org.
+			NS	ns3.cenic.org.
+			NS	ns4.cenic.org.
+			NS	ns5.cenic.org.
+			NS	ns6.cenic.org.
+; MX Servers
+			MX	10 ASPMX.L.GOOGLE.COM.
+			MX	20 ALT1.ASPMX.L.GOOGLE.COM.
+			MX	20 ALT2.ASPMX.L.GOOGLE.COM.
+			MX	30 ASPMX2.GOOGLEMAIL.COM.
+			MX	30 ASPMX3.GOOGLEMAIL.COM.
+			MX	30 ASPMX4.GOOGLEMAIL.COM.
+			MX	30 ASPMX5.GOOGLEMAIL.COM.
+
+			TXT	"v=spf1 include:_spf.google.com -all"
+_spf	 		TXT	"v=spf1 include:_spf.google.com -all"
+
+; Host Servers
+ns1			A	130.166.39.253
+ns2			A	130.166.38.253
+;
+ns3			A	130.166.39.254
+ns			CNAME	ns1
+;
+;
+
+;; SSH Servers
+ssh1			A	130.166.38.54
+
+;; Demos
+eas-dude-testing	A	130.166.39.246
+eas-ir-testing	        A       130.166.39.246
+
+;; META Lab Testing Produts
+faculty-testing		CNAME	products-testing.grid.csun.edu.
+udwpe-testing		CNAME	products-testing.grid.csun.edu.
+etd-testing		CNAME	products-testing.grid.csun.edu.
+brandon-testing		CNAME	products-testing.grid.csun.edu.
+curriculum-testing	CNAME	products-testing.grid.csun.edu.
+wellbeingapp-testing	CNAME	products-testing.grid.csun.edu.
+jewel			CNAME	products-testing.grid.csun.edu.
+
+;; META Lab Individual Testing Products
+etd-test		A	130.166.38.50
+
+;; META Lab Demo Products
+faculty-demo			CNAME	products-demo.grid.csun.edu.
+udwpe-demo			CNAME	products-demo.grid.csun.edu.
+etd-demo			CNAME	products-demo.grid.csun.edu.
+curriculum-demo			CNAME	products-demo.grid.csun.edu.
+wellbeingapp-demo		CNAME	products-demo.grid.csun.edu.
+
+;; Others
+googlefe55669860d05b3b	CNAME	google.com.
+mathweb1		A	130.166.39.150
+mathweb			A	130.166.38.150
+spss			A	130.166.42.1
+spss-39 		A	130.166.39.30
+ubuntu-gamer2		A	130.166.38.245
+winxp-gamer1		A	130.166.39.72
+cit160                  A       130.166.38.234
+cit160lab               A       130.166.38.235
+cit160test		A	130.166.38.237
+comp322			A	130.166.38.236
+tsar211			A	130.166.39.211
+
+$INCLUDE /etc/bind/zones/vhost.RR.sandbox
+

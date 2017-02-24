@@ -1,0 +1,177 @@
+$TTL 3600	; 1 hour
+grid.csun.edu.		IN SOA	ns1.grid.csun.edu. steve.grid.csun.edu. (
+			2014052220 ; serial
+			10800      ; refresh (3 hours)
+			900        ; retry (15 minutes)
+			604800     ; expire (1 week)
+			86400      ; minimum (1 day)
+			)
+		NS	ns1.grid.csun.edu.
+		NS	ns2.grid.csun.edu.
+		NS	ns4.cenic.org.
+		NS	ns5.cenic.org.
+		NS	ns6.cenic.org.
+		NS	skimmer.csun.edu.
+		NS	sapsucker.csun.edu.
+
+$ORIGIN grid.csun.edu.
+
+; Name Server and Main Service
+ns1             A       130.166.39.253
+ns2             A       130.166.38.253
+ns3             A       130.166.39.254
+
+ns              CNAME   ns1
+ns-38           CNAME   ns2
+ns-39           CNAME   ns1
+ns-42           CNAME   chaos2
+
+
+$TTL 3600       ; 1 hour
+		MX	10 ASPMX.L.GOOGLE.COM.
+		MX	20 ALT1.ASPMX.L.GOOGLE.COM.
+		MX	20 ALT2.ASPMX.L.GOOGLE.COM.
+		MX	30 ASPMX2.GOOGLEMAIL.COM.
+		MX	30 ASPMX3.GOOGLEMAIL.COM.
+		MX	30 ASPMX4.GOOGLEMAIL.COM.
+		MX	30 ASPMX5.GOOGLEMAIL.COM.
+		TXT	"v=spf1 include:_spf.google.com -all"
+_spf		TXT     "v=spf1 include:_spf.google.com -all"
+
+_jabber		SRV	 5 0 5269 xmpp-server.l.google.com.
+		SRV	20 0 5269 xmpp-server1.l.google.com.
+		SRV	20 0 5269 xmpp-server2.l.google.com.
+		SRV	20 0 5269 xmpp-server3.l.google.com.
+		SRV	20 0 5269 xmpp-server4.l.google.com.
+_xmpp-server	SRV	 5 0 5269 xmpp-server.l.google.com.
+		SRV	20 0 5269 xmpp-server1.l.google.com.
+		SRV	20 0 5269 xmpp-server2.l.google.com.
+		SRV	20 0 5269 xmpp-server3.l.google.com.
+		SRV	20 0 5269 xmpp-server4.l.google.com.
+
+
+$TTL 3600       ; 1 hour
+ssh                     CNAME   darroze
+ntp			CNAME	ns2
+ntp2			CNAME	ns1
+
+acaffwebforum		CNAME	vis02
+acolon			A	130.166.39.43
+$TTL 3600	; 1 hour
+backuppc		CNAME	c1-s4
+barbera			A	130.166.39.44
+basin			CNAME	saga25
+basin2			CNAME	saga25
+bobal			A	130.166.39.45
+bz03			A	130.166.39.243
+bz05			A	130.166.38.5
+bz06			A	130.166.38.6
+bzvip04			A	130.166.38.4
+c1-s1			A	130.166.38.36
+c1-s2			A	130.166.38.37
+c1-s3			A	130.166.38.38
+c1-s4			A	130.166.38.39
+carignan		A	130.166.38.32
+catbird			A	130.166.38.1
+cerberus		A	130.166.39.41
+cit160			A	130.166.39.234
+		TXT	"004abe5ea8b2fa27a15ca955821701afc3"
+cit160web		A	130.166.39.235
+		TXT	"00c231fd5ef07330df34254a3308ac9fd5"
+$TTL 600	; 10 minutes
+concord			A	130.166.39.35
+confluence		A	130.166.39.83
+corvina			A	130.166.39.36
+csunscholar		CNAME	ghs.google.com.
+darroze			A	130.166.39.100
+dhcp-39			A	130.166.39.254
+dhcp-42			CNAME	chaos2
+digitaldossier		CNAME	saga26
+digitaldossier01	CNAME	saga26
+docs			CNAME	ghs.google.com.
+dolcetto		A	130.166.39.46
+dude			CNAME	hsi01
+force10			A	130.166.39.2
+gamay			A	130.166.38.33
+git			CNAME	saga31
+google43e938f960d05b3b	CNAME	google.com.
+grenache		A	130.166.39.42
+hsi01			A	130.166.38.204
+imagemaker		CNAME	saga26
+imagemaker01		CNAME	saga26
+ipmi-c1-s1		A	130.166.38.16
+			A	130.166.38.19
+ipmi-c1-s2		A	130.166.38.17
+ipmi-c1-s3		A	130.166.38.18
+jira			A	130.166.39.85
+$TTL 3600	; 1 hour
+Joshuas-Xserve		A	130.166.39.41
+		TXT	"313373e9ce8d6a4d336a53372adeceac38"
+$TTL 600	; 10 minutes
+korbel			A	130.166.39.93
+ldap			CNAME	odir.csun.edu.
+ldirector0		A	130.166.39.250
+ldirector1		A	130.166.39.251
+masson			A	130.166.39.92
+mathweb1		A	130.166.39.150
+md3000i			A	130.166.39.81
+merlot			A	130.166.39.1
+merlot-pub		A	130.166.240.10
+moodle			CNAME	korbel
+msf61294		CNAME	saga26
+mysql			CNAME	masson
+mysqlb			CNAME	nassom
+nagios			CNAME	korbel
+nassom			A	130.166.39.91
+nfs01			A	130.166.39.252
+panzura248		CNAME	chaos248
+panzura249		CNAME	chaos249
+phpmyadmin		CNAME	korbel
+pisco			CNAME	pisco188
+pisco186		A	130.166.39.186
+pisco188		A	130.166.39.188
+powerconnect2724	A	130.166.39.4
+rubired			A	130.166.39.22
+sandbox			CNAME	pisco188
+shibboleth		CNAME	saga26
+shiraz			A	130.166.39.31
+shoup			A	130.166.39.34
+smtp			CNAME	rubired
+sp			CNAME	saga26
+spss			CNAME	chaos1
+spss-39			CNAME	spss39
+spss39			A	130.166.39.30
+storageap1		A	130.166.39.101
+storagebp1		A	130.166.39.102
+support			CNAME	pisco188
+switch1			A	130.166.39.2
+switch2			A	130.166.39.3
+syrah			A	130.166.39.47
+tannat			A	130.166.39.48
+$TTL 3600	; 1 hour
+		TXT	"006be3f4d99155a56e638743e2ec800774"
+		TXT	"00af38580b93ce2ce38542dd39380c24c7"
+		TXT	"00c33c309a73a9cb17b56e3cb6f3593f0e"
+$TTL 3600	; 1 hour
+tsar210			A	130.166.39.210
+		TXT	"001e60c875627ce851fbca76541d93846f"
+tsar231			A	130.166.39.231
+		TXT	"00eb158f34d124b5edd5021064480ce855"
+$TTL 3600	; 1 hour
+tsar252			A	130.166.39.252
+		TXT	"009d7cc6f8ca965bd8be10ae0c318cec73"
+$TTL 600	; 10 minutes
+ubuntu-gamer2		A	130.166.39.72
+
+vis02			A	130.166.38.203
+vpn			CNAME	darroze
+webforum		CNAME	vis02
+www			CNAME	korbel
+
+$INCLUDE /etc/bin/zones/pod_generic
+
+$INCLUDE /etc/bin/zones/tsar_generic
+$INCLUDE /etc/bin/zones/saga_generic
+$INCLUDE /etc/bind/zones/ulam_generic
+
+$INCLUDE /etc/bind/zones/vhost.RR.grid

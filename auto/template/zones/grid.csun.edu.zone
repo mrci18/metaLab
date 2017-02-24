@@ -1,0 +1,181 @@
+$ORIGIN grid.csun.edu.
+$TTL 0 ; 0 Minutes
+grid.csun.edu.		IN SOA ns2.grid.csun.edu. ops.metalab.csun.edu. (
+				2017021000	; serial	YYYYMMDD####
+				600		; refresh 	10 Minutes
+				900		; retry	    	15 Minutes
+				604800		; expire	1 Week
+				0		; Minimum	0 Minutes
+			)
+
+	;; DOMAIN NAME SERVERS
+	NS ns1.grid.csun.edu.
+	NS ns2.grid.csun.edu.
+
+;	NS ns1.cenic.org.
+;	NS ns2.cenic.org.
+;	NS ns3.cenic.org.
+	NS ns4.cenic.org.
+	NS ns5.cenic.org.
+	NS ns6.cenic.org.
+
+	NS skimmer.csun.edu.
+	NS sapsucker.csun.edu.
+
+	;; MAIL SERVERS
+	MX	10 	ASPMX.L.GOOGLE.COM.
+	MX	20 	ALT1.ASPMX.L.GOOGLE.COM.
+	MX	20 	ALT2.ASPMX.L.GOOGLE.COM.
+	MX	30 	ASPMX2.GOOGLEMAIL.COM.
+	MX	30 	ASPMX3.GOOGLEMAIL.COM.
+	MX	30 	ASPMX4.GOOGLEMAIL.COM.
+	MX	30 	ASPMX5.GOOGLEMAIL.COM.
+
+	TXT	"v=spf1 include:_spf.google.com -all"
+        SPF     "v=spf1 include:_spf.google.com -all"
+
+_jabber		SRV	5 0 5269 xmpp-server.l.google.com.
+		SRV	20 0 5269 xmpp-server1.l.google.com.
+		SRV	20 0 5269 xmpp-server2.l.google.com.
+		SRV	20 0 5269 xmpp-server3.l.google.com.
+		SRV	20 0 5269 xmpp-server4.l.google.com.
+
+_spf		TXT	"v=spf1 include:_spf.google.com -all"
+		TXT	"v=spf1 include:_spf.google.com ~all"
+
+_spf            SPF     "v=spf1 include:_spf.google.com -all"
+                SPF     "v=spf1 include:_spf.google.com ~all"
+
+_xmpp-server	SRV	5 0 5269 xmpp-server.l.google.com.
+		SRV	20 0 5269 xmpp-server1.l.google.com.
+		SRV	20 0 5269 xmpp-server2.l.google.com.
+		SRV	20 0 5269 xmpp-server3.l.google.com.
+		SRV	20 0 5269 xmpp-server4.l.google.com.
+
+;; PHYSICAL SWITCHES - SPLab
+switch1		A 	130.166.39.2
+switch2		A 	130.166.39.3
+force10		A 	130.166.39.2
+
+;; PHYSICAL SERVERS - SPLab
+merlot			A 	130.166.39.1
+merlot-pub		A 	130.166.240.10
+powerconnect2724 	A 	130.166.39.4 	;; SPLab Hard Drive Rack
+rubired 		A 	130.166.39.22
+shiraz			A 	130.166.39.31
+shoup			A 	130.166.39.34
+concord			A  	130.166.39.35
+corvina			A 	130.166.39.36
+spss			A 	130.166.39.30
+storageap1		A 	130.166.39.101 	;; SPLab Hard Drive Rack
+storagebp1 		A 	130.166.39.102 	;; SPLab Hard Drive Rack
+
+;; PHYSICAL SERVERS - SPLab Xserve
+cerberus	A 	130.166.39.41
+grenache	A	130.166.39.42
+acolon		A 	130.166.39.43
+barbera		A 	130.166.39.44
+bobal		A 	130.166.39.45
+dolcetto	A 	130.166.39.46
+syrah		A 	130.166.39.47
+	
+;; PHYSICAL SWITCHES - MDF
+saga11-gateway	A 	130.166.38.11
+
+;; PHYSICAL SERVERS - MDF
+catbird		A 	130.166.38.1
+carignan	A 	130.166.38.32
+gamay		A	130.166.38.33
+
+;; PHYSICAL SERVERS - MDF Xserve
+tannat		A 	130.166.38.48
+
+;; PHYSICAL SERVERS - CLOUD ENVIRONMENT
+impi-c1-s1	A 	130.166.38.16
+impi-c1-s2	A 	130.166.38.17
+impi-c1-s3 	A 	130.166.38.18
+impi-c1-s4 	A 	130.166.38.19
+c1-s1		A 	130.166.38.36
+c1-s2		A 	130.166.38.37
+c1-s3		A 	130.166.38.38
+c1-s4		A 	130.166.38.39
+
+backuppc	CNAME 	c1-s4
+
+;; VIRTUAL WEB SERVERS
+web-services		A	130.166.38.200
+web-production		A	130.166.38.201
+web-production-1	A	130.166.38.202
+web-production-2	A	130.166.38.203
+web-production-3	A	130.166.38.204
+web-miniprodapps	A	130.166.38.205
+web-staging		A	130.166.38.201
+web-demo		A	130.166.38.211
+web-testing		A	130.166.38.211
+web-proxy               A       130.166.38.206
+web-proxy		A	130.166.38.207
+web-proxy		A	130.166.38.208
+web-proxy               A       130.166.38.209
+web-proxy-1		A	130.166.38.207
+web-proxy-2		A	130.166.38.208
+web-proxy-3		A	130.166.38.209
+web-proxy-4		A	130.166.38.206
+web-wordpress		A	130.166.38.218
+metastead-testing	A	130.166.38.210
+
+;; CLIENT APPLICATIONS AND SERVICES
+mathweb1	A 	130.166.39.150
+
+;; CLIENT VIRTUAL MACHINES
+basin		A	130.166.38.25
+basin2		A	130.166.38.25
+tsar192		A	130.166.38.192
+aeme		A 	130.166.38.193
+
+;; GOOGLE 
+google43e938f960d05b3b	CNAME	google.com.
+calendar		CNAME	ghs.google.com.
+csunscholar		CNAME	ghs.google.com.
+docs			CNAME 	ghs.google.com.
+mail 			CNAME	ghs.google.com.
+
+;; AUTOMATION
+automagic	A	130.166.38.249
+cobbler		CNAME	automagic
+ansible		CNAME	automagic
+
+;; VIRTUAL INFRASTRUCTURE SERVICES
+ldap-proxy		A 	130.166.38.252
+ssh-legacy		A 	130.166.39.100
+masson			A 	130.166.38.3
+ns1			A 	130.166.38.253
+ns2 			A 	130.166.39.253
+monitoring		A	130.166.38.254
+atlassian		A	130.166.38.251
+logs			A	130.166.38.248
+icinga			CNAME	monitoring
+rgsBackup		A	130.166.38.140
+prometheus		A	130.166.38.143
+orsp			A	130.166.38.139
+graylog			A	130.166.38.158
+
+ns 			CNAME	ns1
+ns-38			CNAME	ns1
+ns-39			CNAME 	ns2
+
+;; VIRTUAL MACHINES
+rgs-afp		A	130.166.38.131
+moveit-c1s2	A	130.166.39.147
+git-39		A	130.166.39.65
+pod64-metaweb	A	130.166.39.64
+ubuntu67 	A	130.166.39.67
+replicate-it 	A	130.166.38.148
+
+;; Amazon Web Services
+aws	CNAME		csunmetalab.signin.aws.amazon.com. 
+
+;; WINDOWS SERVER FOR RGS
+meta-operations A	130.166.39.62
+
+$INCLUDE /etc/bind/zones/generic.pod.splab
+$INCLUDE /etc/bind/zones/generic.capsule.mdf
