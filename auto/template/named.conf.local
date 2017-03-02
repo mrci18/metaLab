@@ -1,0 +1,185 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+
+include "/etc/bind/zones.rfc1918";
+
+logging {
+
+    channel default_debug { syslog local7; severity notice; };	
+
+    category default { default_syslog; default_debug; };
+    category general { default_syslog; default_debug; };
+    category security { default_syslog; default_debug; };
+    category config { default_syslog; default_debug; };
+    category resolver { default_syslog; default_debug; };
+    category xfer-in { default_syslog; default_debug;};
+    category xfer-out { default_syslog; default_debug; };
+    category notify { default_syslog; default_debug; };
+    category client { default_syslog; default_debug; };
+    category network { default_syslog; default_debug; };
+    category update { default_syslog; default_debug; };
+    //category queries { default_syslog; default_debug; };
+    category lame-servers { default_syslog; default_debug; };
+    category dnssec { default_syslog; default_debug; };
+    category security { default_syslog; default_debug; };
+    category unmatched { default_syslog; default_debug; };
+
+};
+
+
+
+acl "allowed_servers" {
+  130.166.240.10;	// Merlot: outward facing
+  130.166.39.1;		// Merlot: inward facing
+  130.166.39.254;	// ns2
+  130.166.39.253;	// ns-39
+  130.166.38.253;	// ns-38
+  130.166.0.242;	// CSUN Public: bunting.csun.edu
+  130.166.1.242;	// CSUN Public: blackbird.csun.edu
+  130.166.252.242;	// CSUN Public: bufflehead.csun.edu
+  130.166.44.22;	// CSUN ECS
+  130.166.12.14;	// CSUN ECS
+  198.188.2.5;		// CSUN Internal: skimmer.csun.edu
+  198.188.2.69;		// CSUN Internal: sapsucker.csun.edu
+  137.164.29.66;	// CENIC: ns1.cenic.org
+  137.164.29.68;        // CENIC: ns2.cenic.org
+  198.188.255.192;      // CENIC: ns3.cenic.org
+  137.164.29.67;	// CENIC: ns4.cenic.org
+  137.164.29.69;	// CENIC: ns5.cenic.org
+  198.188.255.193;	// CENIC: ns6.cenic.org
+  52.9.68.75;		// AWS DNS	
+  };
+
+
+
+zone "csun.edu" {
+        type forward;
+        forwarders { 130.166.1.242; 130.166.252.242; 130.166.0.242; };
+};
+
+zone "metalab.csun.edu" IN {
+        type master;
+        file "/etc/bind/zones/metalab.csun.edu.zone";
+        allow-update { key grid-dhcp.grid.csun.edu.; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+
+zone "pioneering.csun.edu" IN {
+        type master;
+        file "/etc/bind/zones/pioneering.csun.edu.zone";
+        allow-update { key grid-dhcp.grid.csun.edu.; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+
+zone "ptg.csun.edu" IN {
+        type master;
+        file "/etc/bind/zones/ptg.csun.edu.zone";
+        allow-update { key grid-dhcp.grid.csun.edu.; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+
+zone "grid.csun.edu" IN {
+        type master;
+        file "/etc/bind/zones/grid.csun.edu.zone";
+        allow-update { key grid-dhcp.grid.csun.edu.; };
+        allow-transfer { "allowed_servers"; };
+	notify yes;
+};
+key "grid-dhcp.grid.csun.edu." {
+	algorithm hmac-md5;
+	secret "B1jOHAcpR9EZVzif3KlIgbo2Kv+F49spIJOmMfKOOQo=";
+};
+
+zone "sandbox.csun.edu" IN {
+        type master;
+        file "/etc/bind/zones/sandbox.csun.edu.zone";
+        allow-update { key sandbox-dhcp.csun.edu.; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+key "sandbox-dhcp.csun.edu." {
+        algorithm hmac-md5;
+        secret "P0smR6dsOcvxjx/byuYCCcCtDHojB4qXUmBdzP2vlHA=";
+};
+
+
+//zone "chaos.csun.edu" IN {
+//        type master;
+//        file  "/etc/bind/zones/chaos.csun.edu.zone";
+//	allow-update { key chaos-dhcp.csun.edu.; };
+//        allow-transfer { "allowed_servers"; };
+//        notify yes;
+//};
+key "chaos-dhcp.csun.edu." {
+        algorithm hmac-md5;
+        secret "oWK8JGFKY09g5m+R/cIVaAmqKOABJ5lWQAYzmO/47SQ=";
+};
+
+zone "chaos.ecs.csun.edu" IN {
+        type master;
+        file "/etc/bind/zones/chaos.ecs.csun.edu.zone";
+        allow-update { key sandbox-dhcp.csun.edu.; key chaos-dhcp.csun.edu.; key chaos.ecs.csun.edu; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+key "chaos.ecs.csun.edu." {
+        algorithm hmac-md5;
+        secret "UYYt2dVD6QmeVwfdDsYoK9Zh1JrmmbZSQUnB09apnWQ=";
+};
+
+zone "38.166.130.in-addr.arpa" IN {
+        type master;
+        file "/etc/bind/zones/130.166.38.zone";
+        allow-update { key chaos-dhcp.csun.edu.; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+
+zone "39.166.130.in-addr.arpa" IN {
+        type master;
+        file "/etc/bind/zones/130.166.39.zone";
+        allow-update { key grid-dhcp.grid.csun.edu.; key sandbox-dhcp.csun.edu.; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+
+zone "42.166.130.in-addr.arpa" IN {
+        type master;
+        file "/etc/bind/zones/130.166.42.zone";
+        allow-update { key sandbox-dhcp.csun.edu.; key chaos-dhcp.csun.edu.; key chaos.ecs.csun.edu; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+
+zone "150.166.130.in-addr.arpa" IN {
+        type master;
+        file "/etc/bind/zones/130.166.150.zone";
+        allow-update { key sandbox-dhcp.csun.edu.; key chaos-dhcp.csun.edu.; key chaos.ecs.csun.edu; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+
+zone "130.168.192.in-addr.arpa" IN {
+        type master;
+        file "/etc/bind/zones/192.168.130.zone";
+        allow-update { key grid-dhcp.grid.csun.edu.; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+};
+
+zone "131.168.192.in-addr.arpa" IN {
+        type master;
+        file "/etc/bind/zones/192.168.131.zone";
+        allow-update { key grid-dhcp.grid.csun.edu.; };
+        allow-transfer { "allowed_servers"; };
+        notify yes;
+
+};
+

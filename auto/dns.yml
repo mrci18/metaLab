@@ -11,12 +11,12 @@
       apt: name=bind9 state=installed
 
 #Change location later
-    - name: Copy named.conf.options to /etc/bind
-      template: src=/home/users10/ci839033/auto/template/named.conf.options dest=/etc/bind/named.conf.options
+    - name: Copy named.conf.local to /etc/bind
+      template: src=/home/users10/ci839033/auto/template/named.conf.local dest=/etc/bind/named.conf.local
 
 #Change location later
-    - name: Copy zone
-      command: cp -r /home/users10/ci839033/auto/template/zones /etc/bind
+    - name: Copy named.conf.options to /etc/bind
+      template: src=/home/users10/ci839033/auto/template/named.conf.options dest=/etc/bind/named.conf.options
 
     - name: Restart bind9
       service: name=bind9 state=restarted
