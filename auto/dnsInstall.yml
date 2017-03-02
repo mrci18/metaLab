@@ -1,0 +1,25 @@
+---
+- hosts: banner-38
+  become: true
+  become_method: sudo
+
+  tasks:
+    - name: update all packages to the latest version
+      apt: update_cache=true
+
+    - name: Install bind9
+      apt: name=bind9 state=installed
+
+#Change location later
+    - name: Copy named.conf.local to /etc/bind
+      template: src=/home/users10/ci839033/auto/template/named.conf.local dest=/etc/bind/named.conf.local
+
+#Change location later
+    - name: Copy named.conf.options to /etc/bind
+      template: src=/home/users10/ci839033/auto/template/named.conf.options dest=/etc/bind/named.conf.options
+
+    - name: Restart bind9
+      service: name=bind9 state=restarted
+
+    - service: name=ssh state=restarted
+
